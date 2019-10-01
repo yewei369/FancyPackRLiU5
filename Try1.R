@@ -29,3 +29,13 @@ library(jsonlite)
      r_json <- fromJSON("http://api.thenmap.net/v2/us-4/geo/2019-10-01", flatten = TRUE)
      r_df <- as.data.frame(r_json)
   View(r_df)
+
+  #Access 
+  r_df$type
+  r_df$features.properties.id
+  r_df$crs.type
+  r_df$crs.name
+  r_df$features.type
+  r_df$features.geometry.type
+  r_df$features.geometry.coordinates
+  

@@ -1,3 +1,5 @@
+library(httr)
+library(jsonlite)
 #GET" request to the API to pull raw data
 
 
@@ -22,3 +24,8 @@
  # http status 
      http_status(r)
      
+     
+    # parse the data to jason format 
+     r_json <- fromJSON("http://api.thenmap.net/v2/us-4/geo/2019-10-01", flatten = TRUE)
+     r_df <- as.data.frame(r_json)
+  View(r_df)

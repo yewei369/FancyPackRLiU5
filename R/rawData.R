@@ -7,12 +7,15 @@
 #' @param date, special date when the entity existed
 #' @return a set rawData including info such as id, name, type and coordinates etc 
 #' @examples
-#' info<-rawData(land,"info",date)$description
+#' info<-rawData("world-2","info","2015-11")$description
 #'          
 #' 
 
 
 rawData<-function(land,module,date,language="") {
+  
+  library(httr)
+  library(jsonlite)
   
   url<-"http://api.thenmap.net"
   path<-paste("v2/",land,"/",module,"/",date,"/",language,sep="")

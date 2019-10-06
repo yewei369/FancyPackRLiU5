@@ -4,12 +4,12 @@ context("ICU")
 
 test_that("Generate errors in abnormal scenarioes", {
    
-  expect_error(x<-ICU$new(land=se-7,date="2015-11",mode="geo"))
+  expect_error(x<-ICU$new(land=se-7,date="2015-11"))
   
 })
 
 test_that("Generate id number", {
-  x<-ICU$new(land="world-2",date="2015-11",mode="geo") 
+  x<-ICU$new(land="world-2",date="2015-11") 
   z<-x$guo$Countries$coordinates
   enti<-x$guo$Entities
   gj<-x$guo$Countries

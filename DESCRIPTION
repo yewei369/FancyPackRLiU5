@@ -7,6 +7,11 @@ Author: Jun Li
 Maintainer: Jun Li <junli559@student.liu.se>
 Description: Read and draw map with geoJSON from ThenMap API, showing the map of an wanted entity under specified date
 License: GPL-3
+Imports:
+    httr,
+    jsonlite,
+    ggplot2,
+    shiny
 Suggests: 
     testthat,
     knitr,

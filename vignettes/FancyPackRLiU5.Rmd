@@ -10,7 +10,12 @@ vignette: >
 ---
 
 ```{r, include = FALSE,warning=FALSE,}
+knitr::opts_chunk$set(error = TRUE)
 library(FancyPackRLiU5)
+library(httr)
+library(jsonlite)
+library(ggplot2)
+library(shiny)
 ```
 
 ## Description
@@ -33,6 +38,7 @@ However, there is some inherent limitations of this package. For example, some c
 
 ## Examples
 ```{r setup, echo=TRUE}
-x<-ICU$new(land="se-7",date="2015-11")
+x=ICU$new(land="se-7",date="2015-11")
 x$visa("stockholm")
+
 ```

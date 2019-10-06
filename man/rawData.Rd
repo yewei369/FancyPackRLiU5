@@ -20,7 +20,7 @@ a set rawData including info such as id, name, type and coordinates etc
 Given \code{land}, data form \code{module} and \code{date}, generate the raw data set
 }
 \examples{
-info<-rawData(land,"info",date)$description
+info<-rawData("world-2","info","2015-11")$description
          
 
 }

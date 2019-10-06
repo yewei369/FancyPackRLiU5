@@ -19,8 +19,9 @@ However, there is some inherent limitations of this package. For example, some c
 
 *rawData()* is designed to read and re-structure raw data from ThenMap API, and prepare the data form for *visa()* method
 
-
+## Travis badge
 Pass status of Travis building:
+https://travis-ci.org/yewei369/FancyPackRLiU5.svg?branch=master
 
 
 name<-"Jun Li"

@@ -12,6 +12,8 @@ rawData(land, module, date, language = "")
 \item{module, }{a data form which includes different information}
 
 \item{date, }{special date when the entity existed}
+
+\item{language, }{specified language preference}
 }
 \value{
 a set rawData including info such as id, name, type and coordinates etc

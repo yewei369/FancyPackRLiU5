@@ -5,6 +5,7 @@
 #' @param land, a data source or category
 #' @param module, a data form which includes different information
 #' @param date, special date when the entity existed
+#' @param language, specified language preference
 #' @return a set rawData including info such as id, name, type and coordinates etc 
 #' @examples
 #' info<-rawData("world-2","info","2015-11")$description

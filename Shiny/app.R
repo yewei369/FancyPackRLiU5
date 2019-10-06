@@ -25,6 +25,12 @@ ui <- fluidPage(
       
     )))
 
+#' server 
+#' 
+#' Back end server which processes input such as geography datasets, searched entity and date, and output a map, id and formal name of entity
+#' 
+#'
+#'
 server <- function(input, output) {
   datasetInput <- reactive({
     switch(input$dataset,

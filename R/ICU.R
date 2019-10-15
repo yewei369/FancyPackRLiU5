@@ -44,7 +44,7 @@ ICU<-setRefClass("ICU",
   
   
   
-    visa=function(aim){
+    visa=function(aim,ind=FALSE,di=1){
       if(!is.character(aim)) stop("The input should be a character!")
       
       
@@ -52,28 +52,73 @@ ICU<-setRefClass("ICU",
        enti<-x$guo$Entities
        gj<-x$guo$Countries
        #id<-enti[grep(aim,enti$name,ignore.case=TRUE),]$id
-       i<-grep(aim,enti$name,ignore.case=TRUE)
+       g<-ggplot()
+       
+  if(ind==TRUE)
+       {draw<-function(i){
+         if(is.list(z[[i]])&length(z[[i]])>1)
+         { num<-length(z[[i]])
+         
+         if(length(z[[i]][[1]])==1)  ## New code here starts
+         {if(num%%7==0) {telo<-NULL;tela<-NULL
+         for(p in 1:num) {if(((p-1)%/%7)%%2==0) telo<-telo+z[[i]][[p]]
+         else tela<-telo+z[[i]][[p]]}
+         teda<-data.frame(Longitude=telo,Latitude=tela)
+         g<-g+geom_polygon(data=teda,aes(x=Longitude,y=Latitude))}
+           else {telo<-NULL;tela<-NULL
+           for(p in 1:num) {if(((p-1)%/%5)%%2==0) telo<-c(telo,z[[i]][[p]])
+           else tela<-c(tela,z[[i]][[p]])}
+           teda<-data.frame(Longitude=telo,Latitude=tela)
+           g<-g+geom_polygon(data=teda,aes(x=Longitude,y=Latitude))}}## New code here finishes
+         
+         else {
+           for(j in 1:num)
+           {if(is.list(z[[i]][[j]])&length(z[[i]][[j]])>1)
+           {te<-length(z[[i]][[j]])
+           for(k in 1:te) g<-g+walk3(i,j,k,z)}
+             else g<-g+walk2(i,j,z)}}}
+         else g<-g+walk1(i,z)
+         g+xlab("Longitude")+ylab("Latitude")}
+       
+         draw(di)
+         }
+   else    
+       {i<-grep(aim,enti$name,ignore.case=TRUE)
        #i<-which(gj$id==as.numeric(id))
        
        if(length(i)==0) stop("Unfortunately there is no data for this entity yet...")
        else if(length(i)>1) stop(paste("Sorry! It seems there is more than one ",aim,sep="")) 
        else
        {len<-length(z)
-       g<-ggplot()
+       
        #for(i in 1:len)
        #cat(i)
         {if(is.list(z[[i]])&length(z[[i]])>1)
              {num<-length(z[[i]])
+             
+             if(length(z[[i]][[1]])==1)  ## New code here starts
+             {if(num%%7==0) {telo<-NULL;tela<-NULL
+             for(p in 1:num) {if(((p-1)%/%7)%%2==0) telo<-telo+z[[i]][[p]]
+             else tela<-telo+z[[i]][[p]]}
+             teda<-data.frame(Longitude=telo,Latitude=tela)
+             g<-g+geom_polygon(data=teda,aes(x=Longitude,y=Latitude))}
+               else {telo<-NULL;tela<-NULL
+               for(p in 1:num) {if(((p-1)%/%5)%%2==0) telo<-c(telo,z[[i]][[p]])
+               else tela<-c(tela,z[[i]][[p]])}
+               teda<-data.frame(Longitude=telo,Latitude=tela)
+               g<-g+geom_polygon(data=teda,aes(x=Longitude,y=Latitude))}}## New code here finishes
+             
+              else {
               for(j in 1:num)
                {if(is.list(z[[i]][[j]])&length(z[[i]][[j]])>1)
                     {te<-length(z[[i]][[j]])
                      for(k in 1:te) g<-g+walk3(i,j,k,z)}
-                else g<-g+walk2(i,j,z)}}
+                else g<-g+walk2(i,j,z)}}}
          else g<-g+walk1(i,z)
-               
-         }}
+         g+xlab("Longitude")+ylab("Latitude")      
+         }}}
        
-       g+xlab("Longitude")+ylab("Latitude")
+       
   },
   
   
